@@ -6,5 +6,6 @@
   <packaging>pom</packaging>
   <modules>
   	<module>cn.letcode.demo.spring.bean</module>
+  	<module>cn.letcode.demo.ta</module>
   </modules>
 </project>
