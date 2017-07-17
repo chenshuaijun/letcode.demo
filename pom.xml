@@ -12,8 +12,9 @@
 		<module>cn.letcode.demo.ta</module>
 	</modules>
 	<properties>
-		<netty.version>5.0.0.Alpha2</netty.version>
+		<netty.version>4.1.13.Final</netty.version>
 		<junit.version>4.12</junit.version>
+		<slf4j.version>1.7.25</slf4j.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -26,6 +27,11 @@
 				<groupId>io.netty</groupId>
 				<artifactId>netty-all</artifactId>
 				<version>${netty.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
