@@ -12,7 +12,7 @@
 		<module>cn.letcode.demo.ta</module>
 	</modules>
 	<properties>
-		<netty.version>4.1.12.Final</netty.version>
+		<netty.version>5.0.0.Alpha2</netty.version>
 		<junit.version>4.12</junit.version>
 	</properties>
 	<dependencyManagement>
