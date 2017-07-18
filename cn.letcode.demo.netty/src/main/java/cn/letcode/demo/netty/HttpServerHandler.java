@@ -32,8 +32,11 @@ public class HttpServerHandler extends ChannelInboundHandlerAdapter {
 		if (msg instanceof FullHttpRequest) {
 			FullHttpRequest req = (FullHttpRequest) msg;
 			req.protocolVersion();
+
+			String contentType = req.headers().get(HttpHeaderNames.CONTENT_TYPE);
+
 			// TODO check content_type swich doing
-			if (HttpHeaderValues.APPLICATION_JSON.contentEquals(req.headers().get(HttpHeaderNames.CONTENT_TYPE))) {
+			if (HttpHeaderValues.APPLICATION_JSON.contentEquals(contentType)) {
 				System.out.println("true===true");
 			}
 
@@ -46,7 +49,7 @@ public class HttpServerHandler extends ChannelInboundHandlerAdapter {
 			FullHttpResponse rep = new DefaultFullHttpResponse(req.protocolVersion(), HttpResponseStatus.OK,
 					Unpooled.wrappedBuffer(content.getBytes(CharsetUtil.UTF_8)));
 
-			req.headers().set(HttpHeaderNames.CONTENT_TYPE, "");
+			req.headers().set(HttpHeaderNames.CONTENT_TYPE, contentType);
 			rep.headers().set(HttpHeaderNames.CONTENT_LENGTH, rep.content().readableBytes());
 			if (!keepAlive) {
 				ctx.write(rep).addListener(ChannelFutureListener.CLOSE);
