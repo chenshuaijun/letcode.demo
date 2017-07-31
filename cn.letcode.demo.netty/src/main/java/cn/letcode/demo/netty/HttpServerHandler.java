@@ -57,6 +57,14 @@ public class HttpServerHandler extends ChannelInboundHandlerAdapter {
 				rep.headers().set(HttpHeaderNames.CONNECTION, HttpHeaderValues.KEEP_ALIVE);
 				ctx.write(rep);
 			}
+		}else{  // http request method get or other go this
+			FullHttpRequest req = (FullHttpRequest) msg;
+			String contentType = req.headers().get(HttpHeaderNames.CONTENT_TYPE);
+			FullHttpResponse rep = new DefaultFullHttpResponse(req.protocolVersion(), HttpResponseStatus.OK,
+					Unpooled.wrappedBuffer("server is ok !!".getBytes(CharsetUtil.UTF_8)));
+
+			req.headers().set(HttpHeaderNames.CONTENT_TYPE, contentType);
+			rep.headers().set(HttpHeaderNames.CONTENT_LENGTH, rep.content().readableBytes());
 		}
 	}
 }
